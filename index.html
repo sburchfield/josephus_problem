@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+  </head>
+  <body>
+
+    <h1>What spot shoud you be in to survie?</h1>
+    <div>
+      <form id="soldiersForm">
+        <label for="soldiers">Enter how many soldiers here:</label>
+        <input type="number" id="soldiersInput" name="soldiersInput">
+        <button type="submit" name="enterButton" id="enterButton">Enter</button>
+      </form>
+    </div>
+    <div>
+      <p>You will need to be in spot: <span id="answer"></span>
+    </div>
+
+
+    <h2>Cheat Sheet</h2>
+    <table id="answerTable">
+      <tr>
+        <th>Start</th>
+        <th>Survivor</th>
+      </tr>
+    </table>
+
+  </body>
+
+  <script type="text/javascript">
+
+    function dec2bin(dec){
+      return (dec >>> 0).toString(2);
+    }
+
+    function returnAnswer(number){
+
+      let binary = dec2bin(number);
+
+      array = binary.split('');
+
+      let moveItem = array[0]
+
+      array.shift()
+
+      array.push(moveItem)
+
+      let newBinary = array.toString().replace(/,/g, "")
+
+      let answer = parseInt(newBinary, 2)
+
+      return answer
+    }
+
+    const answer = document.querySelector("#answer");
+    const answerTable = document.querySelector("#answerTable");
+    const soldiers = document.querySelector("#soldiers");
+    const soldiersForm = document.querySelector("#soldiersForm");
+    const soldiersInput = document.querySelector("#soldiersInput");
+
+    soldiersInput.focus()
+
+    soldiersForm.addEventListener("submit", function(e){
+
+      e.preventDefault()
+
+      let soldiersValue = soldiersInput.value
+
+      answer.innerHTML = returnAnswer(soldiersValue)
+
+    });
+
+
+
+    for( i = 0; i <= 100; i++){
+
+      let tr = document.createElement("tr")
+
+      let html = `
+                <td>`+i+`</td>
+                <td>`+returnAnswer(i)+`</td>
+                `
+
+      tr.innerHTML = html
+
+      answerTable.appendChild(tr)
+
+    }
+
+  </script>
+</html>
