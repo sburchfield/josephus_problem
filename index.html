@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <title>Josephus Problem</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
     <style>
+
+        *{
+          margin: 0;
+          padding: 0;
+        }
+
         body{
           font-family: 'Roboto', sans-serif;
           background-color: #fffeff;
           text-align: center;
         }
-
         .card{
           background-color: #fff;
           border-radius: 6px;
@@ -19,7 +26,6 @@
           box-sizing: border-box;
           margin: 0.5em;
         }
-
         .container{
           max-width: 1366px;
           margin: 0 auto;
@@ -65,16 +71,18 @@
 
         @media screen and (max-width: 768px) {
 
+          .card{
+            margin: 0.5em 0;
+          }
+
           .container main {
             grid-column: 1 / 6;
             grid-row: 1/2
           }
-
           .container aside{
             grid-column: 1 / 6;
             grid-row: 2/2
           }
-
         }
     </style>
   </head>
@@ -107,64 +115,38 @@
   </body>
 
   <script type="text/javascript">
-
     function dec2bin(dec){
       return (dec >>> 0).toString(2);
     }
-
     function returnAnswer(number){
-
       let binary = dec2bin(number);
-
       array = binary.split('');
-
       let moveItem = array[0]
-
       array.shift()
-
       array.push(moveItem)
-
       let newBinary = array.toString().replace(/,/g, "")
-
       let answer = parseInt(newBinary, 2)
-
       return answer
     }
-
     const answer = document.querySelector("#answer");
     const answerTable = document.querySelector("#answerTable");
     const soldiers = document.querySelector("#soldiers");
     const soldiersForm = document.querySelector("#soldiersForm");
     const soldiersInput = document.querySelector("#soldiersInput");
-
     soldiersInput.focus()
-
     soldiersForm.addEventListener("submit", function(e){
-
       e.preventDefault()
-
       let soldiersValue = soldiersInput.value
-
       answer.innerHTML = returnAnswer(soldiersValue)
-
     });
-
-
-
     for( i = 0; i <= 50; i++){
-
       let tr = document.createElement("tr")
-
       let html = `
                 <td>`+i+`</td>
                 <td>`+returnAnswer(i)+`</td>
                 `
-
       tr.innerHTML = html
-
       answerTable.appendChild(tr)
-
     }
-
   </script>
 </html>
