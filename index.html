@@ -7,7 +7,7 @@
     <style>
         body{
           font-family: 'Roboto', sans-serif;
-          background-color: #efefef;
+          background-color: #fffeff;
           text-align: center;
         }
 
@@ -20,41 +20,59 @@
           margin: 0.5em;
         }
 
-        header p{
-          max-width: 600px;
-          margin: 0 auto;
-        }
-
         .container{
           max-width: 1366px;
           margin: 0 auto;
           display: grid;
         }
 
-        .container header{
-          grid-column: 1 / 6;
-        }
-
         .container main{
-          grid-column: 1 / 4;
+          grid-column: 3 / 6;
+          padding: 4em 8em 0 8em;
         }
 
         .container aside{
-          grid-column: 4 / 6;
+          grid-column: 1 / 2;
+        }
+
+        form{
+          margin: 1em;
+        }
+
+        h4{
+          margin: 0.5em auto;
+        }
+
+        input{
+          font-size: 1.5em;
+        }
+
+        button{
+          display: block;
+          margin: 1em auto;
         }
 
         table{
           margin: 0 auto;
+          font-size: 0.8em;
+        }
+
+        #answer{
+          display: block;
+          font-size: 2em;
+          margin: 0.5em auto;
         }
 
         @media screen and (max-width: 768px) {
 
           .container main {
             grid-column: 1 / 6;
+            grid-row: 1/2
           }
 
           .container aside{
             grid-column: 1 / 6;
+            grid-row: 2/2
           }
 
         }
@@ -62,22 +80,6 @@
   </head>
   <body>
     <div class="container">
-
-    <header class="card">
-      <h1>Josephus Problem</h1>
-      <p>Have you ever been captured by the enemy? Has your platoon decided to do a murder suicide pact? Would you rather just be taken by the enemy? Then this is the site for you! Just enter how many troops are with you and see which postition to stand in to be the last man standing.</p>
-    </header>
-
-
-      <main class="card">
-        <h3>What spot shoud you be in to survie?</h3>
-          <form id="soldiersForm">
-            <label for="soldiers">Enter how many soldiers here</label><br>
-            <input type="number" id="soldiersInput" name="soldiersInput">
-            <button type="submit" name="enterButton" id="enterButton">Enter</button>
-          </form>
-          <p>You will need to be in spot<br> <span id="answer"></span>
-      </main>
 
       <aside class="card">
         <h3>Cheat Sheet</h3>
@@ -87,7 +89,20 @@
             <th>Survivor</th>
           </tr>
         </table>
-      <aside>
+      </aside>
+
+      <main class="card">
+        <h1>Josephus Problem</h1>
+        <p>Have you ever been captured by the enemy? Has your platoon decided to do a murder suicide pact? Would you rather just be taken by the enemy? Then this is the site for you! Just enter how many troops are with you and see which postition to stand in to be the last man standing.</p>
+        <h3>What spot shoud you be in to survie?</h3>
+        <form id="soldiersForm">
+          <h4 for="soldiers">Enter how many soldiers here:</h4>
+          <input type="number" id="soldiersInput" name="soldiersInput">
+          <button type="submit" name="enterButton" id="enterButton">Enter</button>
+        </form>
+        <p>You will need to be in spot<br> <span id="answer"></span></p>
+      </main>
+
     </div>
   </body>
 
@@ -136,7 +151,7 @@
 
 
 
-    for( i = 0; i <= 20; i++){
+    for( i = 0; i <= 50; i++){
 
       let tr = document.createElement("tr")
 
